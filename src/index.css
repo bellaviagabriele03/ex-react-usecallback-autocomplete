@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: lightgray;
+}
+
+.title {
+    text-align: center;
+    font-size: 45px;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.container input {
+    padding: 15px;
+    border-top: 2px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: none;
+
+    cursor: pointer;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    margin-top: 20px;
+    width: 100%;
+    background-color: white;
+}
+
+.adv {
+    padding: 15px;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    width: 100%;
+    background-color: white;
+
+}
+
+.container input::selection {
+    border-bottom: none;
+}
