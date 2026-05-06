@@ -4,7 +4,7 @@ const AdviceProducts = ({ product }) => {
     return (
 
         <div className="adv">
-            <h2>{product.name} - <strong>Brand:</strong> {product.brand}</h2>
+            <h2>{product.name}</h2>
         </div>
     )
 }
