@@ -6,36 +6,31 @@ function App() {
 
   const [query, setQuery] = useState("")
   const [products, setProducts] = useState([])
-  const [filterAdv, setFilterAdv] = useState([])
 
 
   const eseguiFetch = () => {
+
+    if (!query.trim()) {
+      setProducts([])
+      return;
+    }
+
     fetch(`http://localhost:3333/products?search=${query}`)
       .then(res => res.json())
       .then(data => setProducts(data)
       )
   }
 
-  const advProduct = () => {
-    const filterProduct = products.filter((p) => p.brand.toLowerCase().includes(query.toLowerCase()))
-    if (filterProduct.length > 0) {
-      setFilterAdv(filterProduct)
-    } else {
-      setFilterAdv(products)
-    }
-  }
+
 
 
   useEffect(() => {
     eseguiFetch()
-    advProduct()
-
-
   }, [query])
 
 
 
-  console.log(products);
+
 
 
   return (
@@ -47,8 +42,8 @@ function App() {
           onChange={e => setQuery(e.target.value)}
           type="text"
           placeholder='Cerca..' />
-        {query.length > 0 && (<>
-          {filterAdv.map((p) => (
+        {products.length > 0 && (<>
+          {products.map((p) => (
             <AdviceProducts product={p} key={p.id} />
           ))}
         </>)}
