@@ -8,7 +8,20 @@ function App() {
   const [products, setProducts] = useState([])
 
 
-  const eseguiFetch = async (query) => {
+  function debounce(callback, delay) {
+    let timer;
+    return (value) => {
+      clearTimeout(timer)
+      timer = setTimeout(() => {
+        callback(value)
+      }, delay)
+    }
+  }
+
+
+
+
+  const eseguiFetch = useCallback(debounce(async (query) => {
 
     if (!query.trim()) {
       setProducts([])
@@ -21,8 +34,7 @@ function App() {
     } catch (error) {
       console.error(error)
     }
-  }
-
+  }, 300), [])
 
 
 
